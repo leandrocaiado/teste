@@ -1,0 +1,7 @@
+package br.exercicio.constante;
+
+public class Constantes {
+
+	
+	public String CAMINHO ="C:\\Users\\leandro.avalone\\Desktop\\saida.txt";
+}

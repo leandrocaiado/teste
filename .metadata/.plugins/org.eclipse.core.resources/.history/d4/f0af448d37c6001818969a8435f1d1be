@@ -1,0 +1,5 @@
+package br.exercicio.service;
+
+public interface ISerializaDesserializa {
+
+}

@@ -1,0 +1,25 @@
+package br.exercicio.teste;
+public class SerializedComTest {
+
+    @AfterClass
+    public static void tearDownAfterClass() throws Exception {
+    }
+
+    @Test
+    public void testFile() throws IOException, ClassNotFoundException {
+        Hello h = new Hello();
+        FileOutputStream bs = new FileOutputStream("hello.txt"); // ("testfile");
+        ObjectOutputStream out = new ObjectOutputStream(bs);
+        out.writeObject(h);
+        out.flush();
+        out.close();
+
+        Hello h2;
+        FileInputStream fis = new FileInputStream("hello.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        h2 = (Hello) ois.readObject();
+
+        assertTrue(10 == h2.getX());
+        assertTrue(20 == h2.getY());
+    }
+}

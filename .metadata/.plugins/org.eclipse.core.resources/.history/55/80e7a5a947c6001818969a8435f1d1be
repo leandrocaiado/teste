@@ -1,0 +1,72 @@
+package br.exercicio.teste;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+
+import org.junit.AfterClass;
+import org.junit.Test;
+
+import br.exercicio.constante.Constantes;
+
+public class SerializedComTest {
+
+	@AfterClass	
+	public static void tearDownAfterClass() throws Exception {
+	}
+	
+	
+	
+
+	@Test
+	public void testFile() throws IOException, ClassNotFoundException {
+		FileOutputStream arquivoGrav;
+		arquivoGrav = new FileOutputStream(Constantes.CAMINHO);
+		ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+		objGravar.writeObject(obj);
+		objGravar.flush();
+		objGravar.close();
+		arquivoGrav.flush();
+		arquivoGrav.close();
+		
+		
+				
+		
+		
+		
+		
+		Hello h2;
+		FileInputStream fis = new FileInputStream("hello.txt");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		h2 = (Hello) ois.readObject();
+
+		assertTrue(10 == h2.getX());
+		assertTrue(20 == h2.getY());
+	}
+
+	@Test
+	public void testByteArray() throws IOException, ClassNotFoundException, InterruptedException {
+		Hello h = new Hello();
+
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		ObjectOutput out = new ObjectOutputStream(bos);
+		out.writeObject(h);
+		byte b[] = bos.toByteArray();
+		out.close();
+		bos.close();
+
+		Hello h2;
+		ByteArrayInputStream bis = new ByteArrayInputStream(b);
+		ObjectInput in = new ObjectInputStream(bis);
+		h2 = (Hello) in.readObject();
+
+		assertTrue(10 == h2.getX());
+		assertTrue(20 == h2.getY());
+	}
+}

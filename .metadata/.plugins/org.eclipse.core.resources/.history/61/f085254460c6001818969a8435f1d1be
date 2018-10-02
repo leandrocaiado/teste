@@ -1,0 +1,33 @@
+package br.exercicio.thread;
+
+import java.util.Map;
+
+public class PopulaEx3 extends Thread {
+    Integer obj = null;
+	static Map<String, Integer> listaThreads = null;
+
+	public static Map<String, Integer> getListaThreads() {
+		return listaThreads;
+	}
+
+	public static void setListaThreads(Map<String, Integer> listaThreads) {
+		PopulaEx3.listaThreads = listaThreads;
+	}
+
+	public PopulaEx3( Integer obj) {
+		this.obj = obj;
+	}
+
+	public void run() {
+
+		listaThreads.put("nome" +  obj,obj);
+
+		try {
+			System.out.println("Populado com " + listaThreads.size());
+			sleep(100);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+}

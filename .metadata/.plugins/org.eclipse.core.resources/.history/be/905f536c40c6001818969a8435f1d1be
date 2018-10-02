@@ -1,0 +1,17 @@
+package br.exercicio.modelo;
+
+import java.util.Date;
+
+public class Employee {
+                private int id;
+                private String name;
+                private Date dtNascimento;
+                
+                public Employee(int id, String name, Date dtNascimento) {
+                        this.id = id;
+                        this.name = name;
+                        this.dtNascimento = dtNascimento;
+                }
+                
+        //      ... 
+        }

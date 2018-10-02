@@ -1,0 +1,9 @@
+package br.exercicio.main;
+
+public class StartSerializareDesserializar {
+	 public static void main(String[] args) {
+	                List<Employee> records = new ArrayList<>();
+	               
+	        }
+}
+

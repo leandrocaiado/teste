@@ -1,0 +1,27 @@
+package br.exercicio.thread;
+
+import java.util.List;
+import java.util.Map;
+
+public class Popula extends Thread {
+
+	private List<Integer> listaThreads = null;
+	Integer obj = null;
+	public Popula(Integer obj) {
+		this.obj = obj;
+	}
+
+	public void run() {
+
+		
+		this.listaThreads.add(obj);
+	
+		try {
+			System.out.println("Populado com "+obj);
+			sleep(100);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+}

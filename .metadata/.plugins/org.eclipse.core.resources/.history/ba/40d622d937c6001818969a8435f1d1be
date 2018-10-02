@@ -1,0 +1,32 @@
+package br.exercicio.service;
+
+import br.exercicio.modelo.Employee;
+
+public class SerializareDessserializarService implements ISerializaDesserializa {
+
+	@Override
+	public Employee serializa1(Employee obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee serializa2(Employee obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee desserializa1(Employee obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee desserializa2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+}

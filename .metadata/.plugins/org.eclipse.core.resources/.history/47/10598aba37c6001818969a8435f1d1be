@@ -1,0 +1,10 @@
+package br.exercicio.service;
+
+import br.exercicio.modelo.Employee;
+
+public interface ISerializaDesserializa {	
+	public Employee serializa1();
+	public Employee serializa2();
+	public Employee desserializa1();
+	public Employee desserializa2();
+}

@@ -1,0 +1,10 @@
+package br.exercicio.service;
+
+import br.exercicio.modelo.Employee;
+
+public interface ISerializaDesserializa {	
+	public static long serializa1(Employee obj) {};
+	public long serializa2(Employee obj);
+	public long desserializa1(Employee obj);
+	public long desserializa2(Employee obj);
+}

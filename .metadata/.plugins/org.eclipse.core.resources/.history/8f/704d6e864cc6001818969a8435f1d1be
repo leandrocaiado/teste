@@ -1,0 +1,5 @@
+package br.exercicio.main;
+
+public class Start1ThreadPopula2ThreadsConsome {
+
+}

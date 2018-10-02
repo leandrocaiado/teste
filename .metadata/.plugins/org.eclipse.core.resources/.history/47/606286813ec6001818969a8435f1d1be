@@ -1,0 +1,85 @@
+package br.exercicio.service;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+
+import br.exercicio.modelo.Employee;
+
+public class SerializareDessserializarService implements ISerializaDesserializa {
+
+	@Override
+	public long serializa1(Employee obj) {
+		long start = System.currentTimeMillis();
+		FileOutputStream arquivoGrav;
+		try {
+			arquivoGrav = new FileOutputStream("C:/saida.txt");
+			ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+			objGravar.writeObject(obj);
+			objGravar.flush();
+			objGravar.close();
+			arquivoGrav.flush();
+			arquivoGrav.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println("Falha ao serializar 1 - " + e.getMessage());
+		}
+		desserializa1(obj);
+		long end = System.currentTimeMillis();
+
+		return end -= start;
+	}
+
+	@Override
+	public long serializa2(Employee obj) {
+		long start = System.currentTimeMillis();
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			ObjectOutput out = new ObjectOutputStream(bos);
+			out.writeObject(obj);
+			byte b[] = bos.toByteArray();
+			out.close();
+			bos.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Falha ao serializar 2! - " + e.getMessage());
+		}
+
+		desserializa2(obj);
+		long end = System.currentTimeMillis();
+		return end -= start;
+	}
+
+	@Override
+	public void desserializa1(Employee obj) {
+
+		FileInputStream arquivoLeitura;
+		try {
+			arquivoLeitura = new FileInputStream("C:/saida.txt");
+			ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
+			System.out.println(objLeitura.readObject());
+			objLeitura.close();
+			arquivoLeitura.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println("Falha ao deserializar! - " + e.getMessage());
+		}
+	}
+
+	@Override
+	public void desserializa2(byte []b) {
+		Employee h2;
+		    ByteArrayInputStream bis = new ByteArrayInputStream(b);
+		    ObjectInput in = new ObjectInputStream(bis);
+		    h2 = (Employee) in.readObject();
+
+
+	}
+
+}

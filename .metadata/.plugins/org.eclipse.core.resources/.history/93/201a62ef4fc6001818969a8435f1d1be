@@ -1,0 +1,30 @@
+package br.exercicio.thread;
+
+import java.util.Map;
+
+public class Consumo1 extends Thread {
+
+	Map<String, Integer> crunchifyThreads = null;
+
+	public Consumo1(Map<String, Integer> crunchifyThreads) {
+		this.crunchifyThreads = crunchifyThreads;
+	}
+
+	public void run() {
+
+		for (int i = 0; i <= 5000; i++)
+
+		{
+
+			crunchifyThreads.put("nome" + i, i);
+
+		}
+		try {
+			System.out.println("Populado com 5000");
+			sleep(100);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+}
